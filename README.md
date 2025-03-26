@@ -1,6 +1,7 @@
 # 测试工具管理系统
 
 一个用于管理和执行各种测试工具的React单页面应用程序。
+![img.png](img.png)
 
 ## 功能特点
 
@@ -30,7 +31,7 @@
 
 ```bash
 # 克隆仓库
-git clone <仓库地址>
+git clone https://github.com/hankerbiao/test-tool-manager.git
 cd test-tools-manager
 
 # 安装依赖
@@ -105,6 +106,3 @@ test-tools-manager/
 
 本应用设计为可以与后端API集成。目前使用模拟数据进行开发和演示。若要连接实际API，请修改`src/api/toolsApi.ts`文件中的实现。
 
-## 许可证
-
-[MIT](LICENSE)
