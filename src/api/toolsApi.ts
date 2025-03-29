@@ -1,21 +1,21 @@
-import axios from 'axios';
+// import axios from 'axios';
 import { TestTool, ToolExecutionResult } from '../types/tools';
 
-// 基础API URL，实际项目中应该从环境变量获取
-const API_BASE_URL = '/api';
+// TODO 基础API URL，使用模拟数据，暂无实际功能
+// const API_BASE_URL = '/api';
 
 // 创建axios实例
-const apiClient = axios.create({
-  baseURL: API_BASE_URL,
-  headers: {
-    'Content-Type': 'application/json',
-  },
-});
+// const apiClient = axios.create({
+//   baseURL: API_BASE_URL,
+//   headers: {
+//     'Content-Type': 'application/json',
+//   },
+// });
 
 // 获取所有工具
 export const fetchTools = async (): Promise<TestTool[]> => {
   try {
-    // 真实环境中应该使用实际API
+    // TODO 真实环境中应该使用实际API，以下同理
     // const response = await apiClient.get('/tools');
     // return response.data;
     
