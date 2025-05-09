@@ -1,108 +1,137 @@
-# 测试工具管理系统
+# 测试工具管理平台
 
-一个用于管理和执行各种测试工具的React单页面应用程序。
-![img.png](img.png)
+测试工具管理平台是一个专为测试工程师设计的集中化测试工具管理系统，提供各类测试工具的注册、管理、执行和监控功能。
+![650d8beddc16701b8506989e355d789e.png](pic/650d8beddc16701b8506989e355d789e.png)
+![e1ffd5aeebd7f5bff11e59d838286936.png](pic/e1ffd5aeebd7f5bff11e59d838286936.png)
+![3f930f16a2450456708967a5a144eb0d.png](pic/3f930f16a2450456708967a5a144eb0d.png)
+## 项目简介
 
-## 功能特点
+本项目旨在解决测试工程师在日常工作中面临的工具分散、管理混乱、使用效率低下等问题，提供一站式测试工具管理解决方案。主要功能包括：
 
-- 集中管理各种测试工具
-- 可视化工具执行界面
-- 工具执行历史记录
-- 参数化配置和执行
-- 响应式设计，适配各种设备
+- 测试工具注册与管理
+- 性能测试工具集成
+- 硬盘测试功能
+- 压力测试功能
+- 测试历史记录与报告生成
+- 多版本测试工具支持
 
 ## 技术栈
 
-- React 18
-- TypeScript
-- Ant Design
-- React Router
-- Axios
-- Vite
+### 后端
+- **FastAPI**: 高性能的Python API框架
+- **SQLModel**: 结合了SQLAlchemy和Pydantic的ORM工具
+- **Pydantic**: 数据验证和设置管理
+- **Uvicorn**: ASGI服务器
 
-## 开发环境设置
+### 前端
+- **React 18**: 用户界面库
+- **Ant Design (antd)**: UI组件库
+- **TypeScript**: 类型安全的JavaScript超集
+- **Vite**: 现代前端构建工具
 
-### 前提条件
-
-- Node.js 18+
-- pnpm 8+
-
-### 安装
-
-```bash
-# 克隆仓库
-git clone https://github.com/hankerbiao/test-tool-manager.git
-cd test-tools-manager
-
-# 安装依赖
-pnpm install
-```
-
-### 开发服务器
-
-```bash
-pnpm dev
-```
-
-访问 http://localhost:5173 查看应用。
-
-### 构建生产版本
-
-```bash
-pnpm build
-```
-
-### 预览生产版本
-
-```bash
-pnpm preview
-```
+### 代理端
+- **Go语言**: 用于开发高性能的数据采集代理
+- 支持跨平台部署，负责从目标机器采集测试数据
 
 ## 项目结构
 
 ```
-test-tools-manager/
-├── public/           # 静态资源
-├── src/              # 源代码
-│   ├── api/          # API服务
-│   ├── assets/       # 资源文件
-│   ├── components/   # 组件
-│   ├── config/       # 配置
-│   ├── hooks/        # 自定义hooks
-│   ├── layouts/      # 布局组件
-│   ├── pages/        # 页面
-│   ├── styles/       # 样式
-│   ├── types/        # 类型定义
-│   ├── utils/        # 工具函数
-│   ├── App.tsx       # 应用入口
-│   └── main.tsx      # 渲染入口
-├── .eslintrc.js      # ESLint配置
-├── .gitignore        # Git忽略文件
-├── index.html        # HTML入口
-├── package.json      # 项目配置
-├── README.md         # 项目说明
-├── tsconfig.json     # TypeScript配置
-└── vite.config.ts    # Vite配置
+CommonTestManagerServer/
+├── backend/                # 后端代码
+│   ├── app/                # 应用主目录
+│   ├── models/             # 数据模型
+│   ├── utils/              # 工具函数
+│   ├── main.py             # 程序入口
+│   └── requirement.txt     # 依赖管理
+├── front/                  # 前端代码
+│   ├── src/                # 源代码
+│   ├── public/             # 静态资源
+│   └── package.json        # 前端依赖
+└── AgentGo/                # Go语言编写的代理端
+    ├── cmd/                # 命令行入口
+    ├── handlers/           # 请求处理
+    ├── models/             # 数据模型
+    └── utils/              # 工具函数
 ```
 
-## 使用指南
+## 安装与运行
 
-### 添加新工具
+### 后端
 
-1. 点击工具列表中的"添加新工具"按钮
-2. 填写工具信息，包括名称、描述、版本、状态等
-3. 配置工具参数
-4. 点击保存
+```bash
+# 进入后端目录
+cd backend
 
-### 执行工具
+# 创建虚拟环境
+python -m venv .venv
 
-1. 从工具列表中选择一个工具
-2. 点击"执行"按钮或切换到"执行"选项卡
-3. 填写执行参数
-4. 点击"执行工具"按钮
-5. 查看执行结果
+# 激活虚拟环境
+# Windows
+.venv\Scripts\activate
+# Linux/Mac
+source .venv/bin/activate
 
-## API集成
+# 安装依赖
+pip install -r requirement.txt
 
-本应用设计为可以与后端API集成。目前使用模拟数据进行开发和演示。若要连接实际API，请修改`src/api/toolsApi.ts`文件中的实现。
+# 启动服务
+python main.py
+```
 
+### 前端
+
+```bash
+# 进入前端目录
+cd front
+
+# 安装依赖
+npm install
+# 或使用 pnpm
+pnpm install
+
+# 开发模式运行
+npm run dev
+# 或
+pnpm dev
+
+# 构建生产版本
+npm run build
+# 或
+pnpm build
+```
+
+### 代理端
+
+```bash
+# 进入代理端目录
+cd AgentGo
+
+# 构建
+go build -o agent ./cmd
+
+# 运行
+./agent
+```
+
+## 贡献指南
+
+欢迎通过以下方式为项目做出贡献：
+
+1. Fork 仓库
+2. 创建特性分支 (`git checkout -b feature/amazing-feature`)
+3. 提交更改 (`git commit -m 'Add some amazing feature'`)
+4. 推送到分支 (`git push origin feature/amazing-feature`)
+5. 创建 Pull Request
+
+## 许可证
+
+MIT
+
+## 鸣谢
+
+特别感谢以下技术和工具的大力支持：
+- **Python**：作为核心开发语言，提供了高效且灵活的编程环境
+- **FastAPI**：高性能API框架，显著提升了后端开发效率和系统响应速度
+- **Cursor**：智能编辑器，带来了优质的代码补全和开发体验
+- **Claude**：出色的AI助手，为解决技术难题提供了宝贵支持
+- 参考仓库：https://github.com/fastapi/full-stack-fastapi-template
